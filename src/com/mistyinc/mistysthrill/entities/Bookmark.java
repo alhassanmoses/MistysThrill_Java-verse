@@ -1,9 +1,20 @@
 package com.mistyinc.mistysthrill.entities;
 
-public class Bookmark {
+import com.mistyinc.mistysthrill.constants.KidFriendlyStatus;
+
+public abstract class Bookmark {
     private long id;
     private String title;
     private String profileUrl;
+    private String kidFriendlyStatus = KidFriendlyStatus.UNKNOWN;
+
+    public String getKidFriendlyStatus() {
+        return kidFriendlyStatus;
+    }
+
+    public void setKidFriendlyStatus(String kidFriendlyStatus) {
+        this.kidFriendlyStatus = kidFriendlyStatus;
+    }
 
     public long getId() {
         return id;
@@ -27,5 +38,16 @@ public class Bookmark {
 
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
+    }
+
+    public abstract boolean isKidFriendlyEligible();
+
+    @Override
+    public String toString() {
+        return "Bookmark{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", profileUrl='" + profileUrl + '\'' +
+                '}';
     }
 }

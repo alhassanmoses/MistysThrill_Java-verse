@@ -1,18 +1,22 @@
 package com.mistyinc.mistysthrill.entities;
 
+import com.mistyinc.mistysthrill.constants.MovieGenre;
+
+import java.util.Arrays;
+
 public class Movie extends Bookmark {
-    private int releasedYear;
+    private int releaseYear;
     private String[] cast;
     private String[] directors;
     private String genre;
     private double imdbRating;
 
-    public int getReleasedYear() {
-        return releasedYear;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setReleasedYear(int releasedYear) {
-        this.releasedYear = releasedYear;
+    public void setReleaseYear(int releasedYear) {
+        this.releaseYear = releasedYear;
     }
 
     public String[] getCast() {
@@ -45,5 +49,24 @@ public class Movie extends Bookmark {
 
     public void setImdbRating(double imdbRating) {
         this.imdbRating = imdbRating;
+    }
+
+    @Override
+    public boolean isKidFriendlyEligible() {
+        if (genre.equals(MovieGenre.HORROR) || genre.equals(MovieGenre.THRILLERS)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "releaseYear=" + releaseYear +
+                ", cast=" + Arrays.toString(cast) +
+                ", directors=" + Arrays.toString(directors) +
+                ", genre='" + genre + '\'' +
+                ", imdbRating=" + imdbRating +
+                '}';
     }
 }

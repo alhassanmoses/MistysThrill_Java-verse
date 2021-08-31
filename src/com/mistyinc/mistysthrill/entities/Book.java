@@ -1,6 +1,11 @@
 package com.mistyinc.mistysthrill.entities;
 
+import com.mistyinc.mistysthrill.constants.BookGenre;
+
+import java.util.Arrays;
+
 public class Book extends Bookmark {
+
     private int publicationYear;
     private String publisher;
     private String[] authors;
@@ -45,5 +50,25 @@ public class Book extends Bookmark {
 
     public void setAmazonRating(double amazonRating) {
         this.amazonRating = amazonRating;
+    }
+
+    @Override
+    public boolean isKidFriendlyEligible() {
+        if (genre.equals(BookGenre.PHILOSOPHY) ||  genre.equals(BookGenre.SELF_HELP)){
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "publicationYear=" + publicationYear +
+                ", publisher='" + publisher + '\'' +
+                ", authors=" + Arrays.toString(authors) +
+                ", genre='" + genre + '\'' +
+                ", amazonRating=" + amazonRating +
+                '}';
     }
 }
