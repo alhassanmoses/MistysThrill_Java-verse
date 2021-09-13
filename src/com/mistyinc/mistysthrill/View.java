@@ -5,6 +5,7 @@ import com.mistyinc.mistysthrill.constants.KidFriendlyStatus;
 import com.mistyinc.mistysthrill.constants.UserType;
 import com.mistyinc.mistysthrill.entities.Bookmark;
 import com.mistyinc.mistysthrill.entities.User;
+import com.mistyinc.mistysthrill.partner.Shareable;
 
 public class View {
 
@@ -25,13 +26,22 @@ public class View {
                         System.out.println("New item bookmarked ... \n" + bookmark);
                     }
                 }
-//                    Mark as kid-friendly
+
                 if (user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
+//                                        Mark as kid-friendly
+
                     if (bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
-                        String  kidFriendlystatus = getKidFriendlyStatusDecision(bookmark);
-                        if (!kidFriendlystatus.equals(KidFriendlyStatus.UNKNOWN)){
-                            bookmark.setKidFriendlyStatus(kidFriendlystatus);
-                            System.out.println("Kid-friendly status: " + kidFriendlystatus + ", " + bookmark);
+                        String kidFriendlyStatus = getKidFriendlyStatusDecision(bookmark);
+                        if (!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
+                            BookmarkController.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus, bookmark);
+                        }
+                    }
+
+//                    Sharing ...
+                    if (bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED) && bookmark instanceof Shareable) {
+                        boolean canBeShared = getShareableDecision();
+                        if (canBeShared) {
+                            BookmarkController.getInstance().share(user, bookmark);
                         }
                     }
                 }
@@ -41,14 +51,19 @@ public class View {
 
     }
 
+    // TODO: Below method should simulate user input via console input
     private static String getKidFriendlyStatusDecision(Bookmark bookmark) {
         return Math.random() < 0.4 ? KidFriendlyStatus.APPROVED : (Math.random() >= 0.4 && Math.random() < 0.8 ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN);
     }
 
+    private static boolean getShareableDecision() {
+        return Math.random() < 0.5 ? true : false;
+    }
 
     private static boolean getBookmarkDecision(Bookmark bookmark) {
         return Math.random() < 0.5 ? true : false;
     }
+
 
 
     /*public static void bookmark(User user, Bookmark[][] bookmarks){
