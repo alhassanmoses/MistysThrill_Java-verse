@@ -1,6 +1,7 @@
 package com.mistyinc.mistysthrill.util;
 
 import java.io.*;
+import java.util.List;
 
 public class IOUtil {
     public static void read(List<String> data, String filename) {

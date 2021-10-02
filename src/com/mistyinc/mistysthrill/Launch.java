@@ -5,10 +5,12 @@ import com.mistyinc.mistysthrill.entities.User;
 import com.mistyinc.mistysthrill.managers.BookmarkManager;
 import com.mistyinc.mistysthrill.managers.UserManager;
 
+import java.util.List;
+
 public class Launch {
 
-    private static User[] users;
-    private static Bookmark[][] bookmarks;
+    private static List<User> users;
+    private static List<List<Bookmark>> bookmarks;
 
 
     private static void loadData() {
@@ -30,7 +32,7 @@ public class Launch {
     }
 
     private static void printBookmarkData() {
-        for (Bookmark[] bookmarkList : bookmarks) {
+        for (List<Bookmark> bookmarkList : bookmarks) {
             for (Bookmark bookmark : bookmarkList) {
                 System.out.println(bookmark);
             }

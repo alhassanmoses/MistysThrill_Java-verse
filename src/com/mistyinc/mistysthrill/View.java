@@ -7,25 +7,25 @@ import com.mistyinc.mistysthrill.entities.Bookmark;
 import com.mistyinc.mistysthrill.entities.User;
 import com.mistyinc.mistysthrill.partner.Shareable;
 
+import java.util.List;
+
 public class View {
 
-    public static void browse(User user, Bookmark[][] bookmarks) {
+    public static void browse(User user, List<List<Bookmark>> bookmarks) {
         System.out.println("\n" + user.getEmail() + " is browsing items ...");
 
         int bookmarkCount = 0;
 
-        for (Bookmark[] bookmarkList :
+        for (List<Bookmark> bookmarkList :
                 bookmarks) {
             for (Bookmark bookmark :
                     bookmarkList) {
-                if (bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {
                     boolean isBookmark = getBookmarkDecision(bookmark);
                     if (isBookmark) {
                         bookmarkCount++;
                         BookmarkController.getInstance().saveUserBookmark(user, bookmark);
                         System.out.println("New item bookmarked ... \n" + bookmark);
                     }
-                }
 
                 if (user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
 //                                        Mark as kid-friendly

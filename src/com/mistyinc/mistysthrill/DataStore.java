@@ -17,8 +17,8 @@ import java.util.List;
 public class DataStore {
 
     private static List<User> users = new ArrayList<>();
-    private static List<List<Bookmark>> bookmarks = new ArrayList<>)();
-    private static UserBookmark[] userBookmarks = new UserBookmark[TOTAL_USER_COUNT * USER_BOOKMARK_LIMIT];
+    private static List<List<Bookmark>> bookmarks = new ArrayList<>();
+    private static List<UserBookmark> userBookmarks = new ArrayList<>();
 
     public static List<User> getUsers() {
         return users;
@@ -28,7 +28,6 @@ public class DataStore {
         return bookmarks;
     }
 
-    private static int bookmarkIndex;
 
     public static void loadData() {
         loadUsers();
@@ -119,6 +118,6 @@ public class DataStore {
     }
 
     public static void add(UserBookmark userBookmark) {
-        userBookmarks[bookmarkIndex++] = userBookmark;
+        userBookmarks.add(userBookmark);
     }
 }

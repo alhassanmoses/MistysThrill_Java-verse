@@ -3,6 +3,8 @@ package com.mistyinc.mistysthrill.managers;
 import com.mistyinc.mistysthrill.dao.UserDao;
 import com.mistyinc.mistysthrill.entities.User;
 
+import java.util.List;
+
 public class UserManager {
     private static UserManager instance = new UserManager();
     private static UserDao dao = new UserDao();
@@ -29,7 +31,7 @@ public class UserManager {
         return user;
     }
 
-    public User[] getUsers(){
+    public List<User> getUsers(){
         return dao.getUsers();
     }
 }
