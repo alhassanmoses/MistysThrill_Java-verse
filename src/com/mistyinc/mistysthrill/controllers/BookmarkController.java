@@ -1,4 +1,4 @@
-package com.mistyinc.mistysthrill.comtrollers;
+package com.mistyinc.mistysthrill.controllers;
 
 import com.mistyinc.mistysthrill.entities.Bookmark;
 import com.mistyinc.mistysthrill.entities.User;

@@ -1,6 +1,6 @@
 package com.mistyinc.mistysthrill;
 
-import com.mistyinc.mistysthrill.comtrollers.BookmarkController;
+import com.mistyinc.mistysthrill.controllers.BookmarkController;
 import com.mistyinc.mistysthrill.constants.KidFriendlyStatus;
 import com.mistyinc.mistysthrill.constants.UserType;
 import com.mistyinc.mistysthrill.entities.Bookmark;

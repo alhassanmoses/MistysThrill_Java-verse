@@ -2,6 +2,11 @@ package com.mistyinc.mistysthrill.managers;
 
 import com.mistyinc.mistysthrill.dao.BookmarkDao;
 import com.mistyinc.mistysthrill.entities.*;
+import com.mistyinc.mistysthrill.util.HttpConnect;
+import com.mistyinc.mistysthrill.util.IOUtil;
+
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
 public class BookmarkManager {
     private static BookmarkManager instance = new BookmarkManager();
@@ -63,22 +68,38 @@ public class BookmarkManager {
         userBookmark.setUser(user);
         userBookmark.setBookmark(bookmark);
 
+        if (bookmark instanceof WebLink) {
+            try {
+                String url = ((WebLink) bookmark).getUrl();
+                if (!url.endsWith(".pdf")) {
+                    String webpage = HttpConnect.download(((WebLink) bookmark).getUrl());
+                    if (webpage != null) {
+                        IOUtil.write(webpage, bookmark.getId());
+                    }
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
         dao.saveUserBookmark(userBookmark);
     }
 
     public void kidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
         bookmark.setKidFriendlyStatus(kidFriendlyStatus);
         bookmark.setKidFriendlyMarkedBy(user);
-        System.out.println("Kid-friendly status: " + kidFriendlyStatus + ", Marked by: "+ user.getEmail() + ", " + bookmark);
+        System.out.println("Kid-friendly status: " + kidFriendlyStatus + ", Marked by: " + user.getEmail() + ", " + bookmark);
     }
 
     public void share(User user, Bookmark bookmark) {
         bookmark.setSharedBy(user);
         System.out.println("Data to be shared: ");
-        if (bookmark instanceof Book){
-            System.out.println(((Book)bookmark).getItemData());
-        }else if (bookmark instanceof WebLink){
-            System.out.println(((WebLink)bookmark).getItemData());
+        if (bookmark instanceof Book) {
+            System.out.println(((Book) bookmark).getItemData());
+        } else if (bookmark instanceof WebLink) {
+            System.out.println(((WebLink) bookmark).getItemData());
         }
     }
 }
