@@ -1,11 +1,19 @@
 package com.mistyinc.mistysthrill.constants;
 
-public class Gender {
-    private Gender() {
+public enum Gender {
+
+
+    MALE ( 0),
+    FEMALE ( 1),
+    TRANSGENDER ( 2);
+
+    private Gender(int type) {
+        this.type = type;
     }
 
-    public static final int MALE = 0;
-    public static final int FEMALE = 1;
-    public static final int TRANSGENDER = 2;
+    private int type;
 
+    public int getType() {
+        return type;
+    }
 }

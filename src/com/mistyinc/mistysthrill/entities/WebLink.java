@@ -1,7 +1,6 @@
 package com.mistyinc.mistysthrill.entities;
 
 import com.mistyinc.mistysthrill.partner.Shareable;
-import org.apache.commons.lang3.StringUtils;
 
 public class WebLink extends Bookmark implements Shareable {
     private String url;

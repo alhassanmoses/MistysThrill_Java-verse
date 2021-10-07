@@ -1,5 +1,6 @@
 package com.mistyinc.mistysthrill.controllers;
 
+import com.mistyinc.mistysthrill.constants.KidFriendlyStatus;
 import com.mistyinc.mistysthrill.entities.Bookmark;
 import com.mistyinc.mistysthrill.entities.User;
 import com.mistyinc.mistysthrill.managers.BookmarkManager;
@@ -19,7 +20,7 @@ public class BookmarkController {
         BookmarkManager.getInstance().saveUserBookmark(user, bookmark);
     }
 
-    public void setKidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
+    public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus, Bookmark bookmark) {
         BookmarkManager.getInstance().kidFriendlyStatus(user, kidFriendlyStatus, bookmark);
     }
 

@@ -2,7 +2,6 @@ package com.mistyinc.mistysthrill.entities;
 
 import com.mistyinc.mistysthrill.constants.BookGenre;
 import com.mistyinc.mistysthrill.partner.Shareable;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 
@@ -11,7 +10,7 @@ public class Book extends Bookmark implements Shareable {
     private int publicationYear;
     private String publisher;
     private String[] authors;
-    private String genre;
+    private BookGenre genre;
     private double amazonRating;
 
     public int getPublicationYear() {
@@ -38,11 +37,11 @@ public class Book extends Bookmark implements Shareable {
         this.authors = authors;
     }
 
-    public String getGenre() {
+    public BookGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(BookGenre genre) {
         this.genre = genre;
     }
 
@@ -56,7 +55,7 @@ public class Book extends Bookmark implements Shareable {
 
     @Override
     public boolean isKidFriendlyEligible() {
-        if (genre.equals(BookGenre.PHILOSOPHY) ||  genre.equals(BookGenre.SELF_HELP)){
+        if (genre.equals(BookGenre.PHILOSOPHY) || genre.equals(BookGenre.SELF_HELP)) {
             return false;
         }
         return true;
@@ -68,7 +67,7 @@ public class Book extends Bookmark implements Shareable {
         builder.append("<item>");
         builder.append("<type>Book</type>");
         builder.append("<title>").append(getTitle()).append("</title>");
-        builder.append("<authors>").append(StringUtils.join(authors, ",")).append("</authors>");
+        builder.append("<authors>").append(String.join(",",authors)).append("</authors>");
         builder.append("<publishers>").append(publisher).append("</publisher>");
         builder.append("<publicationYear>").append(publicationYear).append("<publicationYear>");
         builder.append("<genre>").append(genre).append("</genre>");

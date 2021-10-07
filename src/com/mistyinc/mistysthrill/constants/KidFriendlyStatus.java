@@ -1,11 +1,17 @@
 package com.mistyinc.mistysthrill.constants;
 
-public class KidFriendlyStatus {
-    private KidFriendlyStatus() {
+public enum KidFriendlyStatus {
+    APPROVED("approved"),
+    REJECTED("rejected"),
+    UNKNOWN("unknown");
+
+    private KidFriendlyStatus(String name) {
+        this.name = name;
     }
 
-    public static final String APPROVED = "approved";
-    public static final String REJECTED = "rejected";
-    public static final String UNKNOWN =  "unknown";
+    private String name;
 
+    public String getName() {
+        return name;
+    }
 }
