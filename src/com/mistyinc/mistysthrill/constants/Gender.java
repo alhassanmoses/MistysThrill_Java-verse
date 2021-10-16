@@ -2,7 +2,6 @@ package com.mistyinc.mistysthrill.constants;
 
 public enum Gender {
 
-
     MALE ( 0),
     FEMALE ( 1),
     TRANSGENDER ( 2);

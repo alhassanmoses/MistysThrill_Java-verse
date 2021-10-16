@@ -1,5 +1,6 @@
 package com.mistyinc.mistysthrill;
 
+import com.mistyinc.mistysthrill.bgjobs.WebpageDownloaderTask;
 import com.mistyinc.mistysthrill.entities.Bookmark;
 import com.mistyinc.mistysthrill.entities.User;
 import com.mistyinc.mistysthrill.managers.BookmarkManager;
@@ -47,9 +48,19 @@ public class Launch {
         }
     }
 
+    private static void runDownloaderJob(){
+        WebpageDownloaderTask task = new WebpageDownloaderTask(true);
+
+        (new Thread(task)).start();
+    }
+
     public static void main(String[] args) {
         loadData();
+        //simulating a user browsing the site and making random bookmarks
         start();
+
+        //Beginning the background weblink downloader job
+        runDownloaderJob();
     }
 
 

@@ -57,7 +57,7 @@ public class DataStore {
                 gender = Gender.TRANSGENDER;
             }
 
-            User user= UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4],Gender.valueOf(values[5]), values[6]);
+            User user= UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4],gender, values[6]);
             users.add(user);
         }
     }
