@@ -1,6 +1,7 @@
 package com.mistyinc.mistysthrill.managers;
 
 import com.mistyinc.mistysthrill.constants.Gender;
+import com.mistyinc.mistysthrill.constants.UserType;
 import com.mistyinc.mistysthrill.dao.UserDao;
 import com.mistyinc.mistysthrill.entities.User;
 
@@ -18,7 +19,7 @@ public class UserManager {
         return instance;
     }
 
-    public User createUser(long id, String email, String password, String firstName, String lastName, Gender gender, String userType) {
+    public User createUser(long id, String email, String password, String firstName, String lastName, Gender gender, UserType userType) {
         User user = new User();
 
         user.setId(id);

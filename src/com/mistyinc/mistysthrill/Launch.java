@@ -56,11 +56,13 @@ public class Launch {
 
     public static void main(String[] args) {
         loadData();
+
         //simulating a user browsing the site and making random bookmarks
         start();
 
         //Beginning the background weblink downloader job
-        runDownloaderJob();
+
+//        runDownloaderJob();
     }
 
 

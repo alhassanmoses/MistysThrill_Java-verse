@@ -1,6 +1,7 @@
 package com.mistyinc.mistysthrill.entities;
 
 import com.mistyinc.mistysthrill.constants.Gender;
+import com.mistyinc.mistysthrill.constants.UserType;
 
 public class User {
     private long id;
@@ -9,7 +10,7 @@ public class User {
     private String firstName;
     private String lastName;
     private Gender gender;
-    private String userType;
+    private UserType userType;
 
     public long getId() {
         return id;
@@ -59,11 +60,11 @@ public class User {
         this.gender = gender;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
@@ -76,7 +77,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", gender=" + gender +
-                ", userType='" + userType + '\'' +
+                ", userType=" + userType +
                 '}';
     }
 }

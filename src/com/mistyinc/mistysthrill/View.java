@@ -53,30 +53,16 @@ public class View {
 
     // TODO: Below method should simulate user input via console input
     private static KidFriendlyStatus getKidFriendlyStatusDecision(Bookmark bookmark) {
-        return Math.random() < 0.4 ? KidFriendlyStatus.APPROVED : (Math.random() >= 0.4 && Math.random() < 0.8 ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN);
+        double decision = Math.random();
+        return decision < 0.4 ? KidFriendlyStatus.APPROVED : (decision >= 0.4 && decision < 0.8 ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN);
     }
 
     private static boolean getShareableDecision() {
         return Math.random() < 0.5 ? true : false;
     }
 
+    //randomly get a bookmark decision
     private static boolean getBookmarkDecision(Bookmark bookmark) {
         return Math.random() < 0.5 ? true : false;
     }
-
-
-
-    /*public static void bookmark(User user, Bookmark[][] bookmarks){
-        System.out.println("\n" + user.getEmail() + " is bookmarking");
-        for (int i = 0; i < DataStore.USER_BOOKMARK_LIMIT; i++) {
-           int typeoffset = (int) (Math.random() * DataStore.BOOKMARK_TYPES_COUNT);
-           int bookmarkoffset = (int) (Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE);
-
-           Bookmark bookmark = bookmarks[typeoffset][bookmarkoffset];
-
-            BookmarkController.getInstance().saveUserBookmark(user,bookmark);
-
-            System.out.println(bookmark);
-        }
-    }*/
 }
